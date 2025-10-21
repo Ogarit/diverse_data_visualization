@@ -1,0 +1,8 @@
+version: 6
+environments:
+  default:
+    channels:
+    - url: https://conda.modular.com/max-nightly/
+    - url: https://conda.anaconda.org/conda-forge/
+    packages: {}
+packages: []
