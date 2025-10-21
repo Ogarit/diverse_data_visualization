@@ -10,4 +10,4 @@ class RandomWalk:
 
         # Todos os passeios começam em (0, 0)
         self.x_values = [0]
-        self.y-values = [0]
+        self.y_values = [0]
