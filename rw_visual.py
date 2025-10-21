@@ -17,7 +17,7 @@ def keep_running():
 # Continua criando passeios novos desde que o programa esteja ativo
 while True:
     # Cria um random walk
-    rw = RandomWalk()
+    rw = RandomWalk(50_000)
     rw.fill_walk()
 
     # Plota os pontos no passeio
@@ -25,7 +25,7 @@ while True:
     fig, ax = plt.subplots()
     point_numbers = range(rw.num_points)
     ax.scatter(rw.x_values, rw.y_values, c=point_numbers, cmap=plt.cm.YlGnBu,
-               s=15)
+               s=1)
     ax.set_aspect('equal')
 
     ax.scatter(0, 0, c='green', s=100)
