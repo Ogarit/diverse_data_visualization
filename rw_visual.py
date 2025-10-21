@@ -1,10 +1,11 @@
 import matplotlib.pyplot as plt
 from random_walk import RandomWalk
+import gui_dimensions as gd
 
 
 def keep_running():
+    """Verifica se continuará com outra caminhada."""
     option = input("Fazer outra caminhada? (s/n): ")
-
     if option.lower() == 'n':
         return False
     elif option.lower() != 's':
@@ -14,6 +15,9 @@ def keep_running():
         return True
 
 
+dimensions = gd.get_gui_size()
+dpi = gd.get_dpi()
+
 # Continua criando passeios novos desde que o programa esteja ativo
 while True:
     # Cria um random walk
@@ -22,7 +26,7 @@ while True:
 
     # Plota os pontos no passeio
     plt.style.use('seaborn-v0_8')
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots(figsize=(dimensions['x'], dimensions['y']), dpi=dpi)
     point_numbers = range(rw.num_points)
     ax.scatter(rw.x_values, rw.y_values, c=point_numbers, cmap=plt.cm.YlGnBu,
                s=1)
