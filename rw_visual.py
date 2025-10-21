@@ -31,6 +31,10 @@ while True:
     ax.scatter(0, 0, c='green', s=100)
     ax.scatter(rw.x_values[-1], rw.y_values[-1], c='red', s=100)
 
+    # Remove os eixos
+    ax.get_xaxis().set_visible(False)
+    ax.get_yaxis().set_visible(False)
+
     plt.show()
 
     if not keep_running():
