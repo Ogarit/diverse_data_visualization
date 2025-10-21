@@ -4,7 +4,7 @@ x_values = range(1, 5_001)
 y_values = [x**3 for x in x_values]
 
 plt.style.use('seaborn-v0_8')
-_, ax = plt.subplots()
+fig, ax = plt.subplots()
 ax.scatter(x_values, y_values, c=y_values, cmap=plt.cm.plasma, s=10)
 
 # Título do gráfico e dos rótulos
