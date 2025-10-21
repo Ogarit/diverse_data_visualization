@@ -15,6 +15,9 @@ while True:
                s=15)
     ax.set_aspect('equal')
 
+    ax.scatter(0, 0, c='green', s=100)
+    ax.scatter(rw.x_values[-1], rw.y_values[-1], c='red', s=100)
+
     plt.show()
 
     keep_running = input("Fazer outra caminhada? (s/n): ")
