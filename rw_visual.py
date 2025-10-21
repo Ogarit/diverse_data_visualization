@@ -1,6 +1,19 @@
 import matplotlib.pyplot as plt
 from random_walk import RandomWalk
 
+
+def keep_running():
+    option = input("Fazer outra caminhada? (s/n): ")
+
+    if option.lower() == 'n':
+        return False
+    elif option.lower() != 's':
+        print('Selecione uma opção válida!')
+        return keep_running()
+    else:
+        return True
+
+
 # Continua criando passeios novos desde que o programa esteja ativo
 while True:
     # Cria um random walk
@@ -20,6 +33,5 @@ while True:
 
     plt.show()
 
-    keep_running = input("Fazer outra caminhada? (s/n): ")
-    if keep_running.lower() == 'n':
+    if not keep_running():
         break
