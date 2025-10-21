@@ -5,7 +5,7 @@ y_values = [x**2 for x in x_values]
 
 plt.style.use('seaborn-v0_8')
 fig, ax = plt.subplots()
-ax.scatter(x_values, y_values, color=(0.2, 0.6, 1), s=10)
+ax.scatter(x_values, y_values, c=y_values, cmap=plt.cm.plasma, s=10)
 
 # Define o título do gráfico e os exios do rótulo
 ax.set_title("Números quadrados", fontsize=14)
