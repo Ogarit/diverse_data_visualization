@@ -21,15 +21,14 @@ dpi = gd.get_dpi()
 # Continua criando passeios novos desde que o programa esteja ativo
 while True:
     # Cria um random walk
-    rw = RandomWalk(50_000)
+    rw = RandomWalk()
     rw.fill_walk()
 
     # Plota os pontos no passeio
     plt.style.use('seaborn-v0_8')
     fig, ax = plt.subplots(figsize=(dimensions['x'], dimensions['y']), dpi=dpi)
     point_numbers = range(rw.num_points)
-    ax.scatter(rw.x_values, rw.y_values, c=point_numbers, cmap=plt.cm.YlGnBu,
-               s=1)
+    ax.plot(rw.x_values, rw.y_values, color='blue', linewidth=1)
     ax.set_aspect('equal')
 
     ax.scatter(0, 0, c='green', s=100)
