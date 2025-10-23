@@ -19,7 +19,7 @@ for value in poss_results:
     frequency = results.count(value)
     frequencies.append(frequency)
 
-# Visualiza os resultados~
+# Visualiza os resultados
 title = "Resultados da Rolagem de dois dados D6 1.000 Vezes"
 labels = {'x': 'Resultado', 'y': 'Frequência do Resultado'}
 fig = px.bar(x=poss_results, y=frequencies, title=title, labels=labels)
