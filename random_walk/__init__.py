@@ -16,7 +16,7 @@ class RandomWalk:
         """Calcula todos os pontos do passeio."""
         # Define as direções possíveis e a distancia máxima
         direction = [1, -1]
-        distance = [0, 1, 2, 3, 4]
+        distance = range(0, 9)
 
         # Continua dando passos até que o passeio atinja o comprimento desejado
         while len(self.x_values) < self.num_points:
