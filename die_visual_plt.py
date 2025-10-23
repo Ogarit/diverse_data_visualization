@@ -12,6 +12,7 @@ poss_results = range(1, die.num_sides+1)
 frequencies = [results.count(value) for value in poss_results]
 
 # Visualiza os resultados
+plt.style.use('seaborn-v0_8')
 fig, ax = plt.subplots(figsize=(10, 6))
 ax.bar(poss_results, frequencies)
 
