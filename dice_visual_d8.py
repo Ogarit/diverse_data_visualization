@@ -1,7 +1,7 @@
 import plotly.express as px
 from die import Die
 
-# Cria um D6 e um D10
+# Cria dois D8
 die1 = Die(8)
 die2 = Die(8)
 
