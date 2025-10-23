@@ -27,7 +27,6 @@ while True:
     # Plota os pontos no passeio
     plt.style.use('seaborn-v0_8')
     fig, ax = plt.subplots(figsize=(dimensions['x'], dimensions['y']), dpi=dpi)
-    point_numbers = range(rw.num_points)
     ax.plot(rw.x_values, rw.y_values, color='blue', linewidth=1)
     ax.set_aspect('equal')
 
