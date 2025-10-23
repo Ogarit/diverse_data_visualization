@@ -14,21 +14,13 @@ class RandomWalk:
 
     def fill_walk(self):
         """Calcula todos os pontos do passeio."""
-        # Define as direções possíveis e a distancia máxima
-        direction = [1, -1]
-        distance = range(0, 9)
 
         # Continua dando passos até que o passeio atinja o comprimento desejado
         while len(self.x_values) < self.num_points:
 
             # Decide qual a direção tomar, e até onde ir
-            x_direction = choice(direction)
-            x_distance = choice(distance)
-            x_step = x_direction * x_distance
-
-            y_direction = choice(direction)
-            y_distance = choice(distance)
-            y_step = y_direction * y_distance
+            x_step = self.get_step()
+            y_step = self.get_step()
 
             # Rejeita movimentos que não vão a lugar algum
             if x_step == 0 and y_step == 0:
@@ -40,3 +32,9 @@ class RandomWalk:
 
             self.x_values.append(x)
             self.y_values.append(y)
+
+    def get_step(self):
+        """Calcula as etapas da caminhada."""
+        direction = choice([1, -1])
+        distance = choice(range(0, 9))
+        return direction * distance
