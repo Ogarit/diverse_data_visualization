@@ -23,4 +23,8 @@ for value in poss_results:
 title = "Resultados da Rolagem de dois dados D6 1.000 Vezes"
 labels = {'x': 'Resultado', 'y': 'Frequência do Resultado'}
 fig = px.bar(x=poss_results, y=frequencies, title=title, labels=labels)
+
+# Personaliza ainda mais o gráfico
+fig.update_layout(xaxis_dtick=1)
+
 fig.show()
