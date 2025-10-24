@@ -22,8 +22,9 @@ for row in reader:
 # Plota as temperaturas máximas e mínimas
 plt.style.use('seaborn-v0_8')
 fig, ax = plt.subplots()
-ax.plot(dates, highs, color='red')
-ax.plot(dates, lows, color='blue')
+ax.plot(dates, highs, color='red', alpha=0.5)
+ax.plot(dates, lows, color='blue', alpha=0.5)
+ax.fill_between(dates, highs, lows, facecolor='blue', alpha=0.1)
 
 # Formata o gráfico
 ax.set_title('Temperaturas Máxima e Mínima Diária, 2021', fontsize=24)
