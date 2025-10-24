@@ -3,7 +3,7 @@ from datetime import datetime
 from pathlib import Path
 import matplotlib.pyplot as plt
 
-path = Path('weather_data/sitka_weather_07-2021_simple.csv')
+path = Path('weather_data/sitka_weather_2021_simple.csv')
 lines = path.read_text().splitlines()
 
 reader = csv.reader(lines)
@@ -23,7 +23,7 @@ fig, ax = plt.subplots()
 ax.plot(dates, highs, color='red')
 
 # Formata o gráfico
-ax.set_title('Temperaturas Máxima Diária, Julho de 2021', fontsize=24)
+ax.set_title('Temperaturas Máxima Diária, 2021', fontsize=24)
 ax.set_xlabel('', fontsize=16)
 fig.autofmt_xdate()
 ax.set_ylabel('Temperatura (Fº)', fontsize=16)
