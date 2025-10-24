@@ -3,7 +3,7 @@ from datetime import datetime
 from pathlib import Path
 import matplotlib.pyplot as plt
 
-path = Path('weather_data/data/sitka_weather_2021_simple.csv')
+path = Path('weather_data/data/death_valley_2021_simple.csv')
 lines = path.read_text().splitlines()
 
 reader = csv.reader(lines)
@@ -13,11 +13,15 @@ header_row = next(reader)
 dates, highs, lows = [], [], []
 for row in reader:
     current_date = datetime.strptime(row[2], r'%Y-%m-%d')
-    high = int(row[4])
-    low = int(row[5])
-    dates.append(current_date)
-    highs.append(high)
-    lows.append(low)
+    try:
+        high = int(row[3])
+        low = int(row[4])
+    except ValueError:
+        print(f'Dados ausentes para {current_date}')
+    else:
+        dates.append(current_date)
+        highs.append(high)
+        lows.append(low)
 
 # Plota as temperaturas máximas e mínimas
 plt.style.use('seaborn-v0_8')
@@ -27,7 +31,8 @@ ax.plot(dates, lows, color='blue', alpha=0.5)
 ax.fill_between(dates, highs, lows, facecolor='blue', alpha=0.1)
 
 # Formata o gráfico
-ax.set_title('Temperaturas Máxima e Mínima Diária, 2021', fontsize=24)
+title = 'Temperaturas Máxima e Mínima Diária, 2021\nDeath Valley, CA'
+ax.set_title(title, fontsize=24)
 ax.set_xlabel('', fontsize=16)
 fig.autofmt_xdate()
 ax.set_ylabel('Temperatura (Fº)', fontsize=16)
