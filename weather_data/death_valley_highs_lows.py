@@ -3,32 +3,30 @@ from pathlib import Path
 import csv
 import matplotlib.pyplot as plt
 
-path = Path('weather_data/data/death_valley_2021_simple.csv')
+path = Path('weather_data/data/death_valley_2021_full.csv')
 lines = path.read_text().splitlines()
-
-reader = csv.reader(lines)
-header_row = next(reader)
+death_valley = csv.DictReader(lines)
 
 # Extrai as temperaturas máximas e mínimas
-dates, highs, lows = [], [], []
-for row in reader:
-    current_date = datetime.strptime(row[2], r'%Y-%m-%d')
+dates, tmax_list, tmin_list = [], [], []
+for row in death_valley:
+    current_date = datetime.strptime(row['DATE'], r'%Y-%m-%d')
     try:
-        high = int(row[3])
-        low = int(row[4])
+        tmax = int(row['TMAX'])
+        tmin = int(row['TMIN'])
     except ValueError:
         print(f'Dados ausentes para {current_date}')
     else:
         dates.append(current_date)
-        highs.append(high)
-        lows.append(low)
+        tmax_list.append(tmax)
+        tmax_list.append(tmin)
 
 # Plota as temperaturas máximas e mínimas
 plt.style.use('seaborn-v0_8')
 fig, ax = plt.subplots()
-ax.plot(dates, highs, color='red', alpha=0.5)
-ax.plot(dates, lows, color='blue', alpha=0.5)
-ax.fill_between(dates, highs, lows, facecolor='blue', alpha=0.1)
+ax.plot(dates, tmax_list, color='red', alpha=0.5)
+ax.plot(dates, tmin_list, color='blue', alpha=0.5)
+ax.fill_between(dates, tmax_list, tmin_list, facecolor='blue', alpha=0.1)
 
 # Formata o gráfico
 title = 'Temperaturas Máxima e Mínima Diária, 2021\nDeath Valley, CA'

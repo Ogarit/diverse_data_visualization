@@ -6,17 +6,15 @@ import matplotlib.pyplot as plt
 # Preparando o arquivo csv
 path = Path('weather_data/data/san_francisco_2021_full.csv')
 lines = path.read_text().splitlines()
+san_francisco = csv.DictReader(lines)
 
-san_francisco = csv.reader(lines)
-next(san_francisco)
-
-# Obtendo as listas com os dados de temperatura máxima e mínima
+# Extrai as temperatura máxima e mínima
 dates, tmax_list, tmin_list = [], [], []
 for row in san_francisco:
-    date = datetime.strptime(row[2], r'%Y-%m-%d')
-    tmax = int(row[7])
-    tmin = int(row[8])
-    dates.append(date)
+    current_date = datetime.strptime(row['DATE'], r'%Y-%m-%d')
+    tmax = int(row['TMAX'])
+    tmin = int(row['TMIN'])
+    dates.append(current_date)
     tmax_list.append(tmax)
     tmin_list.append(tmin)
 
