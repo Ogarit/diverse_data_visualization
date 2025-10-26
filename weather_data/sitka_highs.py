@@ -1,6 +1,6 @@
-import csv
 from datetime import datetime
 from pathlib import Path
+import csv
 import matplotlib.pyplot as plt
 
 path = Path('weather_data/data/sitka_weather_2021_simple.csv')

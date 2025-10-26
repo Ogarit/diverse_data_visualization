@@ -1,6 +1,6 @@
-import csv
 from datetime import datetime
 from pathlib import Path
+import csv
 import matplotlib.pyplot as plt
 
 path = Path('weather_data/data/death_valley_2021_simple.csv')
@@ -34,8 +34,10 @@ ax.fill_between(dates, highs, lows, facecolor='blue', alpha=0.1)
 title = 'Temperaturas Máxima e Mínima Diária, 2021\nDeath Valley, CA'
 ax.set_title(title, fontsize=24)
 ax.set_xlabel('', fontsize=16)
-fig.autofmt_xdate()
 ax.set_ylabel('Temperatura (Fº)', fontsize=16)
+ax.set_ylim(10, 140)
 ax.tick_params(labelsize=16)
+
+fig.autofmt_xdate()
 
 plt.show()
