@@ -3,7 +3,7 @@ import json
 import plotly.express as px
 
 # Lê os dados como uma string e os converte em um objeto Python
-path = Path('eq_data/data/readable_eq_data.geojson')
+path = Path('eq_data/data/all_month.geojson')
 contents = path.read_text()
 all_eq_data = json.loads(contents)
 
@@ -12,16 +12,22 @@ all_eq_dicts = all_eq_data['features']
 
 mags, lons, lats, eq_titles = [], [], [], []
 for eq_dict in all_eq_dicts:
-    mags.append(eq_dict['properties']['mag'])
-    lons.append(eq_dict['geometry']['coordinates'][0])
-    lats.append(eq_dict['geometry']['coordinates'][1])
-    eq_titles.append(eq_dict['properties']['title'])
+    if not (isinstance(eq_dict['properties']['mag'], type(None))
+            or isinstance(eq_dict['geometry']['coordinates'][0], type(None))
+            or isinstance(eq_dict['geometry']['coordinates'][1], type(None))
+            or isinstance(eq_dict['properties']['title'], type(None))):
+        mags.append(eq_dict['properties']['mag'])
+        lons.append(eq_dict['geometry']['coordinates'][0])
+        lats.append(eq_dict['geometry']['coordinates'][1])
+        eq_titles.append(eq_dict['properties']['title'])
 
-title = 'Global Earthquakes'
+mags_sizes = [abs(mag) for mag in mags]
+
+title = all_eq_data['metadata']['title']
 fig = px.scatter_geo(
     lat=lats,
     lon=lons,
-    size=mags,
+    size=mags_sizes,
     title=title,
     color=mags,
     color_continuous_scale='Viridis',
