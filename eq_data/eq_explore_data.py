@@ -6,7 +6,6 @@ path = Path('eq_data/data/eq_data_1_day_m1.geojson')
 contents = path.read_text()
 all_eq_data = json.loads(contents)
 
-# Cria uma versão mais legível do arquivo de dados
-path = Path('eq_data/data/readable_eq_data.geojson')
-readable_contents = json.dumps(all_eq_data, indent=4)
-path.write_text(readable_contents)
+# Examina todos os terremotos no conjunto de dados
+all_eq_dicts = all_eq_data['features']
+print(len(all_eq_dicts))
