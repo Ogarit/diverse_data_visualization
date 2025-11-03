@@ -24,7 +24,7 @@ while True:
     total_points = range(rw.num_points)
 
     # Plota os pontos no passeio
-    title = "Caminhada aleatória em 3D"
+    title = "Passeio aleatório em 3D"
     fig = px.scatter_3d(x=rw.x_values, y=rw.y_values, z=rw.z_values,
                         color=total_points, title=title)
 
